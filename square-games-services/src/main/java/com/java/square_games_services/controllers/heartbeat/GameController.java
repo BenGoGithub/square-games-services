@@ -1,7 +1,7 @@
-package com.java.square_games_services.controllers;
+package com.java.square_games_services.controllers.heartbeat;
 
 import com.java.square_games_services.dao.GameDAO;
-import com.java.square_games_services.models.Game;
+import com.java.square_games_services.models.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +17,14 @@ public class GameController {
     private GameDAO gameDAO;
 
     @PostMapping
-    public ResponseEntity<Game> createGame(@RequestBody Game game) {
-        Game createdGame = gameDAO.create(game);
+    public ResponseEntity<GameService> createGame(@RequestBody GameService game) {
+        GameService createdGame = gameDAO.create(game);
         return new ResponseEntity<>(createdGame, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Game> getGame(@PathVariable Long id) {
-        Game game = gameDAO.read(id);
+    public ResponseEntity<GameService> getGame(@PathVariable Long id) {
+        GameService game = gameDAO.read(id);
         if (game != null) {
             return ResponseEntity.ok(game);
         }
@@ -32,15 +32,15 @@ public class GameController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Game>> getAllGames() {
-        List<Game> games = gameDAO.readAll();
+    public ResponseEntity<List<GameService>> getAllGames() {
+        List<GameService> games = gameDAO.readAll();
         return ResponseEntity.ok(games);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Game> updateGame(@PathVariable Long id, @RequestBody Game game) {
+    public ResponseEntity<GameService> updateGame(@PathVariable Long id, @RequestBody GameService game) {
         game.setId(id);
-        Game updatedGame = gameDAO.update(game);
+        GameService updatedGame = gameDAO.update(game);
         if (updatedGame != null) {
             return ResponseEntity.ok(updatedGame);
         }

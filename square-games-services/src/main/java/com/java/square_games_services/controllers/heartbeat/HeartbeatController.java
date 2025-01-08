@@ -1,4 +1,4 @@
-package com.java.square_games_services.controllers;
+package com.java.square_games_services.controllers.heartbeat;
 
 
 import com.java.square_games_services.sensors.HeartbeatSensor;

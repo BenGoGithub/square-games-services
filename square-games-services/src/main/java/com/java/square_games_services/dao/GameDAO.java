@@ -1,12 +1,12 @@
 package com.java.square_games_services.dao;
 
-import com.java.square_games_services.models.Game;
+import com.java.square_games_services.models.GameService;
 import java.util.List;
 
 public interface GameDAO {
-    Game create(Game game);
-    Game read(Long id);
-    List<Game> readAll();
-    Game update(Game game);
+    GameService create(GameService game);
+    GameService read(Long id);
+    List<GameService> readAll();
+    GameService update(GameService game);
     void delete(Long id);
 }
